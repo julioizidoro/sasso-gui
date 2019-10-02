@@ -16,22 +16,66 @@
             <span class="sr-only">(current)</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/table" mdbWavesEffect>Tabelas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/modals" mdbWavesEffect>Modal</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/login" mdbWavesEffect>Login</a>
-        </li>
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item dropdown btn-group" dropdown>
+            <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light " mdbWavesEffect>
+              <label>Cadastro</label>
+            </a>
+            <div class="dropdown-menu dropdown-primary dropdown-menu-right" role="menu">
+              <a class="dropdown-item" routerLink="/conscliente">Clientes</a>
+              <a class="dropdown-item" href="#">Fornecedores</a>
+              <a class="dropdown-item" href="#">Produtos</a>
+              <a class="dropdown-item" href="#">Contas</a>
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav nav-flex-icons">
+            <li class="nav-item dropdown btn-group" dropdown>
+              <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light " mdbWavesEffect>
+                <label>Estoque</label>
+              </a>
+              <div class="dropdown-menu dropdown-primary dropdown-menu-right" role="menu">
+                <a class="dropdown-item" href="#">Compras</a>
+                <a class="dropdown-item" href="#">Pedidos</a>
+                <a class="dropdown-item" href="#">Acertos</a>
+                <a class="dropdown-item" href="#">Produção</a>
+                <a class="dropdown-item" href="#">Devolução</a>
+                <a class="dropdown-item" href="#">Faturamento</a>
+              </div>
+            </li>
+          </ul>
+          <ul class="navbar-nav nav-flex-icons">
+              <li class="nav-item dropdown btn-group" dropdown>
+                <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light " mdbWavesEffect>
+                  <label>Financeiro</label>
+                </a>
+                <div class="dropdown-menu dropdown-primary dropdown-menu-right" role="menu">
+                  <a class="dropdown-item" href="#">Contas a Receber</a>
+                  <a class="dropdown-item" href="#">Cotnas a Pagar</a>
+                  <a class="dropdown-item" href="#">Fluxo de Caixa</a>
+                </div>
+              </li>
+            </ul>
+            <ul class="navbar-nav nav-flex-icons">
+                <li class="nav-item dropdown btn-group" dropdown>
+                  <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light " mdbWavesEffect>
+                    <label>Relatórios</label>
+                  </a>
+                  <div class="dropdown-menu dropdown-primary dropdown-menu-right" role="menu">
+                    
+                  </div>
+                </li>
+              </ul>
+          
+
+
       </ul>
       <!-- Menu -->
 
       <!-- Informações do usuário -->
       <ul class="navbar-nav nav-flex-icons">
         <li class="nav-item dropdown btn-group" dropdown>
-          <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light border-bottom pb-0" mdbWavesEffect>
+          <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light " mdbWavesEffect>
             <label>Nome</label>
             <i class="fas fa-user"></i>
           </a>

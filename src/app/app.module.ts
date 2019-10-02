@@ -1,3 +1,4 @@
+import { ClienteModule } from './cliente/cliente.module';
 import { AgmCoreModule } from '@agm/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,7 +17,7 @@ import { NavigationModule } from './main-layout/navigation/navigation.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -31,7 +32,8 @@ import { NavigationModule } from './main-layout/navigation/navigation.module';
     SharedModule,
     ViewsModule,
     ErrorModule,
-    FormsModule, 
+    FormsModule,
+    ClienteModule,
     ReactiveFormsModule
   ],
   providers: [],
