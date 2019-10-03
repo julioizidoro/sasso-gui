@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/usuario/model/usuario';
+import { AuthService } from 'src/app/usuario/login/auth.service';
 
 @Component({
   selector: 'app-basic-table',
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private authService : AuthService,
   ) { }
 
   ngOnInit() {
@@ -30,11 +32,9 @@ export class LoginComponent implements OnInit {
   }
 
   logar() {
+    console.log('logar');
     this.uusario = this.formulario.value;
-    if (this.uusario.user === 'sasso') {
-      if ( this.uusario.password  === '123456' ) {
-        this.router.navigate(['/']);
-      }
-    }
+    console.log(this.uusario.user);
+    this.authService.fazerLogin(this.uusario);
   }
 }
