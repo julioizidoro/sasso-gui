@@ -11,6 +11,7 @@ import { Location } from '@angular/common';
 
 export class AppComponent implements OnInit {
   values: string[] = ['Tag 1', 'Tag 2', 'Tag 4'];
+  logado = true;
 
   specialPage: boolean;
 
@@ -39,6 +40,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.logado === false) {
+        this.router.navigate(['/login']);
+    }
   }
 
   goBack(): void {
