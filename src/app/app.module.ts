@@ -11,6 +11,7 @@ import { AppRoutes } from './app.routes.service';
 import { ViewsModule } from './views/views.module';
 import { SharedModule } from './shared/shared.module';
 import { ErrorModule } from './views/errors/error.module';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 // main layout
 import { NavigationModule } from './main-layout/navigation/navigation.module';
@@ -20,6 +21,7 @@ import { NavigationModule } from './main-layout/navigation/navigation.module';
     AppComponent,
   ],
   imports: [
+    MDBBootstrapModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: ''
     }),
