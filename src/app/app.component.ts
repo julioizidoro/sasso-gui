@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AuthService } from './usuario/login/auth.service';
-import { TouchSequence } from 'selenium-webdriver';
+
 
 @Component({
   selector: 'app-root',
@@ -31,10 +31,10 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private location: Location,
-    private authService : AuthService,
+    private authService: AuthService,
   ) {
 
-    this.router.events.subscribe((route:any) => {
+    this.router.events.subscribe((route: any) => {
       this.currentUrl = route.url;
 
       this.specialPage = this.specialPages.indexOf(this.currentUrl) !== -1;
@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.logado === false) {
-      this.router.navigate(['/login'])
+      this.router.navigate(['/login']);
     }
     this.authService.mostrarMenuEmitter.subscribe(
       mostrar => this.logado = mostrar
@@ -57,6 +57,6 @@ export class AppComponent implements OnInit {
 
   logof() {
     this.authService.unsubscribe();
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
 }

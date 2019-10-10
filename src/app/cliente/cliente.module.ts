@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { TextMaskModule } from 'angular2-text-mask';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
@@ -22,6 +22,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     CommonModule,
     RouterModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
   ],
   exports: [

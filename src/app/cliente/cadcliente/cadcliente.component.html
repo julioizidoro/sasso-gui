@@ -47,7 +47,7 @@
                             <label for="cpf">CPF</label>
 
                             <input type="text" class="form-control" [textMask]="{mask: maskCPF}" id="cpf"
-                                   
+
                                    placeholder="000.000.000-00"/>
 
                         </div>
@@ -58,8 +58,8 @@
                                   >
                         </div>
                         <div *ngIf="pessoaFisica" class="form-group col-md-4">
-                            <input type="checkbox" id="segundo" value="true" 
-                                   (change)="setClienteSegundo()">
+                            <input type="checkbox" id="segundo" value="true"/>
+
                             <label for="segundo"> Possui segundo cliente</label>
                         </div>
                     </div>

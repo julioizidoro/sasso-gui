@@ -9,20 +9,18 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  unsubscribe() {
-    throw new Error("Method not implemented.");
-  }
 
-  private usuairoAutenticado: boolean = false;
+
+  private usuairoAutenticado = false;
   mostrarMenuEmitter = new EventEmitter<boolean>();
-  
+
 
   constructor(
-    private router : Router,
+    private router: Router,
   ) { }
 
-  fazerLogin(usuario : Usuario) {
-    console.log()
+  fazerLogin(usuario: Usuario) {
+    console.log();
     if (usuario.user === 'sasso' &&  usuario.password  === '123456' ) {
         this.usuairoAutenticado = true;
         this.router.navigate(['/']);
@@ -31,6 +29,6 @@ export class AuthService {
         this.usuairoAutenticado = false;
         this.mostrarMenuEmitter.emit(false);
       }
-      this.usuairoAutenticado;
+    this.usuairoAutenticado;
     }
 }
