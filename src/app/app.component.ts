@@ -55,8 +55,5 @@ export class AppComponent implements OnInit {
     this.location.back();
   }
 
-  logof() {
-    this.authService.unsubscribe();
-    this.router.navigate(['/login']);
-  }
+  
 }

@@ -12,10 +12,12 @@
                 <accordion-group heading="Dados Principais" [isOpen]="isFirstOpen">
                     <div class="row">
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-6">
-                            <label for="exampleInputNome2">Nome</label>
-                            <input type="text" class="form-control" id="exampleInputNome2" placeholder="Nome"
+                            <label for="nome">Nome/Razão Social</label>
+                            <input type="text" class="form-control" id="nome" placeholder="Nome"
                                    >
                         </div>
+
+
                         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                             <label for="exampleInputEmail2">Email</label>
                             <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email"
@@ -23,7 +25,7 @@
                         </div>
                         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-4">
                             <label for="exampleInputTipoJuridico">Tipo Juridico</label>
-                            <select class="form-control"  (change)="setTipoJuridico()">
+                            <select class="form-control"  formControlName="tipojuridico" (change)="setTipoJuridico()">
                                 <option value="PF">Pessoa Fisica</option>
                                 <option value="PJ">Pessoa Juridica</option>
                             </select>
@@ -33,13 +35,13 @@
                         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-4">
                             <label for="TelefoneFixo">Telefone Fixo</label>
                             <input type="text" class="form-control" [textMask]="{mask: maskFONE}" id="TelefoneFixo"
-                                   placeholder="(000)0000-0000"
+                                   placeholder="(00)0000-0000"
                                    >
                         </div>
                         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-4">
                             <label for="telefoneCelular">Telefone Celular</label>
                             <input type="text" class="form-control" [textMask]="{mask: maskCELULAR}"
-                                   id="TelefoneCelular" placeholder="(000)00000-0000"
+                                   id="TelefoneCelular" placeholder="(00)00000-0000"
                                    >
                         </div>
 
@@ -64,7 +66,186 @@
                         </div>
                     </div>
                 </accordion-group>
+                
+                <accordion-group heading="Endereço" >
+                    <div formGroupName="clienteendereco" class="row">
+                        <div class="form-group col-lg-2 col-md-3 col-sm-12 col-xs-12">
+                            <label for="cep">CEP</label>
+                            <input type="text" class="form-control" id="cep" [textMask]="{mask: maskCEP}"
+                                   placeholder="00000-000"  />
+                                 
+                        </div>
+                        <div class="form-group col-lg-5 col-md-6 col-sm-12 col-xs-12">
+                            <label for="exampleInputLogradouro">Logradouro</label>
+                            <input type="text" class="form-control" id="exampleInputLogradouro" placeholder="Logradouro"
+                                   >
+                        </div>
+                        <div class="form-group col-lg-2 col-md-3 col-sm-12 col-xs-12">
+                            <label for="exampleInputNumero">Número</label>
+                            <input type="text" class="form-control" id="exampleInputNumero" placeholder="Número"
+                                  >
+                        </div>
+                        <div class="form-group col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                            <label for="exampleInputComplemento">Complemento</label>
+                            <input type="text" class="form-control" id="exampleInputComplemento"
+                                   placeholder="Complemento"
+                                   >
+                        </div>
+
+                        <div class="form-group col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                            <label for="exampleInputBairro">Bairro</label>
+                            <input type="text" class="form-control" id="exampleInputNumero" placeholder="Bairro"
+                                   >
+                        </div>
+                        <div class="form-group col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                            <label for="exampleInputCidade">Cidade</label>
+                            <input type="text" class="form-control" id="exampleInputCidade" placeholder="Cidade"
+                                   >
+                        </div>
+                        <div class="form-group col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                            <label for="exampleInputResidencialEstado">Estado</label>
+                            <select class="form-control" >
+                                <option value="AC">AC</option>
+                                <option value="AL">AL</option>
+                                <option value="AP">AP</option>
+                                <option value="BA">BA</option>
+                                <option value="CE">CE</option>
+                                <option value="DF">DF</option>
+                                <option value="ES">ES</option>
+                                <option value="GO">GO</option>
+                                <option value="MA">MA</option>
+                                <option value="MT">MT</option>
+                                <option value="MS">MS</option>
+                                <option value="MG">MG</option>
+                                <option value="PA">PA</option>
+                                <option value="PB">PB</option>
+                                <option value="PR">PR</option>
+                                <option value="PE">PE</option>
+                                <option value="PI">PI</option>
+                                <option value="RJ">RJ</option>
+                                <option value="RN">RN</option>
+                                <option value="RS">RS</option>
+                                <option value="RO">RO</option>
+                                <option value="RR">RR</option>
+                                <option value="SE">SE</option>
+                                <option value="SC">SC</option>
+                                <option value="SP">SP</option>
+                                <option value="TO">TO</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                            <label for="exampleInputFoneResidencial">Telefone Residencial</label>
+                            <input type="text" class="form-control" [textMask]="{mask: maskFONE}"
+                                   id="exampleInputFoneResidencial" placeholder="(000)0000-0000"
+                                   >
+                        </div>
+                    </div>
+                </accordion-group>
+                <accordion-group heading="Dados Complementares" *ngIf="pessoaFisica">
+                    <div formGroupName="clientecomplemento" class="row">
+                        <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-3">
+                            <label for="exampleInputSexo">Sexo</label>
+                            <select class="form-control" >
+                                <option value="M">Masculino</option>
+                                <option value="F">Feminino</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-3">
+                            <label for="exampleInputNacionalidade">Nacionalidade</label>
+                            <input type="text" class="form-control" id="exampleInputNacionalidade"
+                                   placeholder="Nacionalidade"
+                                   >
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-3">
+                            <label for="exampleInputNaturalidade">Naturalidade</label>
+                            <input type="text" class="form-control" id="exampleInputNacionalidade"
+                                   placeholder="Naturalidade"
+                                   >
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-3">
+                            <label for="exampleInputProfissao">Profissão</label>
+                            <input type="text" class="form-control" id="exampleInputProfissao" placeholder="Profissão"
+                                   >
+                        </div>
+
+                        <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-3">
+                            <label for="exampleInputRG">RG</label>
+                            <input type="text" class="form-control" id="exampleInputRG" placeholder="RG"
+                                   >
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-3">
+                            <label for="exampleInputEmissor">Emissor</label>
+                            <input type="text" class="form-control" id="exampleInputEmissor" placeholder="Emissor"
+                                   >
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-3">
+                            <label for="edataemissao">Data Emissão</label>
+                            <input type="text" placeholder="Data emissão" class="form-control"
+                                   [textMask]="{mask: maskDATE}"
+                                   >
+                        </div>
+
+                        <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-3">
+                            <label for="exampleNomePai">Nome Pai</label>
+                            <input type="text" class="form-control" id="exampleNomePai" placeholder="Nome Pai"
+                                   >
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-3">
+                            <label for="exampleInputNomeMae">Nome Mãe</label>
+                            <input type="text" class="form-control" id="exampleInputNomeMae" placeholder="Nome Mãe"
+                                   >
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-3">
+                            <label for="exampleInputEstadoCivil">Estado Civil</label>
+                            <select class="form-control" >
+                                <option value="Casado(a)">Casado(a)</option>
+                                <option value="Divorciado(a)">Divorciado(a)</option>
+                                <option value="Separado(a)">Separado(a)</option>
+                                <option value="Solteiro(a)">Solteiro(a)</option>
+                                <option value="Viúvo(a) ">Viúvo(a)</option>
+                            </select>
+                        </div>
+                    </div>
+                </accordion-group>
+
+                <accordion-group heading="Cliente Socio" *ngIf="pessoaJuridica">
+                    <div formGroupName="clientesocio" class="row">
+                        <div class="form-group col-md-6 col-sm-12">
+                            <label for="exampleNomeSocio">Nome</label>
+                            <input type="text" class="form-control" id="exampleInputNomeSocio" placeholder="Nome"
+                                   >
+                        </div>
+                        <div class="form-group col-md-6 col-sm-12">
+                            <label for="exampleInputEmailSocio">Email</label>
+                            <input type="email" class="form-control" id="exampleInputEmailSocio" placeholder="Email"
+                                   >
+                        </div>
+                        <div class="form-group col-sm-12 col-md-6 col-lg-3">
+                            <label for="exampleInputCPFSocio">CPF</label>
+                            <input type="text" class="form-control" [textMask]="{mask: maskCPF}"
+                                   id="exampleInputCPFSocio" placeholder="000.000.000-00"
+                                   >
+                        </div>
+                        <div class="form-group col-sm-12 col-md-6 col-lg-3">
+                            <label for="exampleInputFoneSocio">Telefone Celular</label>
+                            <input type="text" class="form-control" [textMask]="{mask: maskCELULAR}"
+                                   id="exampleInputFoneSocio" placeholder="(000)00000-0000"
+                                   >
+                        </div>
+                    </div>
+                </accordion-group>
                 </accordion>
+                <div class="mt-3 w-100 text-right">
+                    <button type="button" class="btn btn-primary" (click)="salvar()">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                        Salvar
+                    </button>
+                    <button type="submit" class="btn btn-danger" style="margin-left:1%;" (click)="cancelar()">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                        Cancelar
+                    </button>
+    
+                </div>
             <br/>
         </form>
     </div>

@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { AccordionModule, BsDatepickerModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    AccordionModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     BrowserModule,
   ],
   exports: [

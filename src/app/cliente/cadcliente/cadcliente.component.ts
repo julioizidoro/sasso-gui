@@ -11,15 +11,15 @@ export class CadclienteComponent implements OnInit {
 
    formulario: FormGroup;
    pessoaJuridica = false;
-  pessoaFisica = false;
+   pessoaFisica = false;
    isFirstOpen = false;
    oneAtATime: true;
    public maskCPF = [/[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/];
   // tslint:disable-next-line:max-line-length
   public maskCNPJ = [/[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/];
-  public maskFONE = ['(', /[0-9]/, /[0-9]/, /[0-9]/, ')', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/];
+  public maskFONE = ['(', /[0-9]/, /[0-9]/, ')', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/];
   // tslint:disable-next-line:max-line-length
-  public maskCELULAR = ['(', /[0-9]/, /[0-9]/, /[0-9]/, ')', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/];
+  public maskCELULAR = ['(', /[0-9]/, /[0-9]/, ')', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/];
   public maskCEP = [/[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/, /[0-9]/];
   public maskDATE = [/[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, '/', /[0-9]/,  /[0-9]/, /[0-9]/, /[0-9]/];
 
@@ -29,6 +29,51 @@ export class CadclienteComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.formulario = this.formBuilder.group({
+
+      idinstituicao: [null],
+      nome: [null],
+      cpfcnpj: [null],
+      email: [null],
+      fonecelular: [null],
+      fonefixo: [null],
+      datacadastro: [null],
+      tipo: [null],
+      tipojuridico: [null],
+      segundo: [false],
+      clientesocio: this.formBuilder.group({
+        idclientesocio: [null],
+        csnome: [null],
+        cscpf: [null],
+        csfonecelular: [null],
+        csemail: [null]
+      }),
+      clienteendereco: this.formBuilder.group({
+        idclienteenderecoresidencial: [null],
+        cercep: [null],
+        cerendereco: [null],
+        cernumero: [null],
+        cerbairro: [null],
+        cercomplemento: [null],
+        cercidade: [null],
+        cerestado: [null],
+        cerfoneresidencial: [null]
+      }),
+      clientecomplemento: this.formBuilder.group({
+        idclienteclientecomplemento: [null],
+        nacionalidade: [null],
+        naturalidade: [null],
+        nomepai: [null],
+        nomemae: [null],
+        profissao: [null],
+        estadocivil: [null],
+        numerorg: [null],
+        dataemissao: [null],
+        emissor: [null],
+        sexo: [null]
+      }),
+     
+    });
   }
 
   setTipoJuridico() {
@@ -39,6 +84,14 @@ export class CadclienteComponent implements OnInit {
       this.pessoaJuridica = true;
       this.pessoaFisica = false;
     }
+  }
+
+  salvar(){
+
+  }
+
+  cancelar(){
+    
   }
 
 }
