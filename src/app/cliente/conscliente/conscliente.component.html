@@ -1,77 +1,102 @@
-<div class="row mt-5">
-        <div class="col-md-12">
-          <div>
-              <button type="button" style="float:right;" class="btn btn-primary font-weight-light" routerLink="/cadcliente">
-                <i class="fa fa-plus" aria-hidden="true"></i>
-                <a class="ml-2">Adicionar</a>
-              </button>
-          </div>
-        <br/>
-        <br/>
-            <!--Card-->
-            <mdb-card cascade="true" narrower="true" class="mt-2 mb-4">
-                <!--Card image-->
-                <div class="view gradient-card-header blue darken-2">
-                    <h4 class="h4-responsive text-white">Consulta de Clientes</h4>
-                </div>
-                <!--/Card image-->
-                <!--Card content-->
-                <mdb-card-body>
-                    <!--Table-->
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th>Código</th>
-                            <th>Nome</th>
-                            <th>Fone Celular</th>
-                            <th>E-mail</th>
-                            <th>Ações</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Julio Izidiro da Silva Junior</td>
-                            <td>(48)98404-4409 </td>
-                            <td>jizidoro@globo.com</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Julio Izidiro da Silva Junior</td>
-                            <td>(48)98404-4409 </td>
-                            <td>jizidoro@globo.com</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Julio Izidiro da Silva Junior</td>
-                            <td>(48)98404-4409 </td>
-                            <td>jizidoro@globo.com</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Julio Izidiro da Silva Junior</td>
-                            <td>(48)98404-4409 </td>
-                            <td>jizidoro@globo.com</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>Julio Izidiro da Silva Junior</td>
-                            <td>(48)98404-4409 </td>
-                            <td>jizidoro@globo.com</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">6</th>
-                            <td>Julio Izidiro da Silva Junior</td>
-                            <td>(48)98404-4409 </td>
-                            <td>jizidoro@globo.com</td>
-                        </tr>
-
-                        </tbody>
-                    </table>
-
-                </mdb-card-body>
-                <!--/.Card content-->
-            </mdb-card>
-            <!--/.Card-->
-        </div>
+<br/><br/>
+<div class="page-header">
+    <div class="container-fluid">
+        <h3>
+            Consulta de Clientes
+        </h3>
+        <hr/>
     </div>
+    <form [formGroup]="formulario">
+        <div class="container-fluid" style="width:100%;">
+            
+            <br><br>
+            <div class="w-100">
+                <accordion [closeOthers]="oneAtATime">
+                    <accordion-group heading="Pesquisar" [isOpen]="isFirstOpen">
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="nome">Nome</label>
+                                <input type="text" class="form-control" id="nome" placeholder="Nome"
+                                       formControlName="nome">
+                            </div>
+                            <div class="form-group col-md-3">
+                                    <label for="cnpj">CNPJ/CPF</label>
+                                    <input type="text" class="form-control" id="cnpj" placeholder="CNPJ"
+                                           formControlName="cnpj">
+                                </div>
+                            <div class="form-group col-md-5">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email"
+                                       formControlName="email">
+                            </div>
+                            <div class="form-group col-md-12 text-right">
+                                <button type="button" class="btn btn-primary" onclick="pesquisar()">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                    Pesquisar
+                                </button>
+                                <button type="submit" class="btn btn-primary" style="margin-left:1%;"
+                                        onclick="">
+                                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                                    Limpar
+                                </button>
+                            </div>
+                        </div>
+                    </accordion-group>
+                </accordion>
+            </div>
+            <div class="w-100">
+                    <br/>
+                      <button type="button" style="float:right;" class="btn btn-primary font-weight-light"
+                              routerLink="/cadcliente">
+                          <i class="fa fa-plus" aria-hidden="true"></i>
+                          <a class="ml-2">Adicionar</a>
+                      </button>
+                  </div>
+            <div class="table-responsive-lg">
+                <table class="table table-striped">
+                    <thead>
+                    <tr class="pb-0 card-body align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero align-items-lg-center row">
+                        <th class="col-lg-4 mb-1 text-muted text-small w-sm-100 hidden-xs hidden-sm">Nome</th>
+                        <th class="col-lg-2 mb-1 text-muted text-small w-sm-100 hidden-xs hidden-sm">CNPJ/CPF</th>
+                        <th class="col-lg-3 mb-1 text-muted text-small w-sm-100 hidden-xs hidden-sm">Email</th>
+                        <th class="col-lg-2 mb-1 text-muted text-small w-sm-100 hidden-xs hidden-sm">Telefone</th>
+                        <th class="col-lg-1 mb-1 text-muted text-small w-sm-100 hidden-xs hidden-sm">Ações</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let i of instituicao"
+                        class="pb-0 card-body align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero align-items-lg-center">
+                        <td class="col-lg-4 col-xs mb-1 text-muted text-small w-sm-100">{{i.nome}}</td>
+                        <td class="col-lg-2 col-xs mb-1 text-muted text-small w-sm-100">{{i.cpfcnpj}}</td>
+                        <td class="col-lg-3 col-xs mb-1 text-muted text-small w-sm-100 hidden-xs">{{i.email}}</td>
+                        <td class="col-lg-2 col-xs mb-1 text-muted text-small w-sm-100 hidden-xs">{{i.fonecelular}}</td>
+                        <td class="col-lg-1 col-xs mb-1 text-muted text-small w-sm-100">
+                            <button (click)="editar( i )" class="btn btn-success hidden-xs hidden-sm"
+                                    style="margin-top: -9px;float: right">
+                                <i class="fa  fa-pencil"></i>
+                            </button>
+                            <button (click)="editar( i )" class="btn btn-success hidden-lg hidden-md"
+                                    style="float: right">
+                                <i class="fa  fa-pencil"></i>
+                            </button>
+
+                            <div *ngIf="habilitarConsulta">
+
+                                <button (click)="selecionarCliente( i )" class="btn btn-success hidden-xs hidden-sm"
+                                        style="margin-top: -9px;float: right">
+                                    <i class="glyphicon glyphicon-ok"></i>
+                                </button>
+                                <button (click)="selecionarCliente( i )" class="btn btn-success hidden-lg hidden-md"
+                                        style="float: right">
+                                    <i class="glyphicon glyphicon-ok"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
