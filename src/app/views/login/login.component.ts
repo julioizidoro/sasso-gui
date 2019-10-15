@@ -19,11 +19,10 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authService : AuthService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
-    this.uusario = new Usuario();
     this.formulario = this.formBuilder.group({
       user: [null],
       password: [null],
@@ -32,9 +31,6 @@ export class LoginComponent implements OnInit {
   }
 
   logar() {
-    console.log('logar');
-    this.uusario = this.formulario.value;
-    console.log(this.uusario.user);
-    this.authService.fazerLogin(this.uusario);
+    this.authService.fazerLogin(this.formulario.get('user').value, this.formulario.get('password').value);
   }
 }

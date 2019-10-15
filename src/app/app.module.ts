@@ -1,3 +1,5 @@
+import { UsuarioModule } from './usuario/usuario.module';
+import { UsuarioService } from './usuario/usuario.service';
 import { ClienteModule } from './cliente/cliente.module';
 import { AgmCoreModule } from '@agm/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -36,7 +38,8 @@ import { NavigationModule } from './main-layout/navigation/navigation.module';
     ErrorModule,
     FormsModule,
     ClienteModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UsuarioModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
