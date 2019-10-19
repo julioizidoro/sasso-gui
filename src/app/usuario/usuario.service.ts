@@ -13,6 +13,10 @@ export class UsuarioService {
     private httpClient: HttpClient
   ) { }
 
+  logar1(usuario: Usuario): Observable<any> {
+    return this.httpClient.post<any>(env.baseApiUrl + 'usuarios/logar', usuario);
+  }
+
   logar(user: string, password: string): Observable<Usuario> {
     return this.httpClient.get<Usuario>(env.baseApiUrl + 'usuarios/' + user + '/' + password);
   }

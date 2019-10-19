@@ -54,6 +54,4 @@ export class AppComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-
-  
 }

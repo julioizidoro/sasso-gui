@@ -1,6 +1,8 @@
+import { ClienteService } from './../cliente.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Instituicao } from '../model/instituicao';
 
 @Component({
   selector: 'app-conscliente',
@@ -9,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ConsclienteComponent implements OnInit {
 
+    instituicao: Instituicao[];
     formulario: FormGroup;
     isFirstOpen = false;
     oneAtATime: true;
@@ -16,6 +19,7 @@ export class ConsclienteComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private clienteService: ClienteService,
   ) { }
 
   ngOnInit() {
@@ -25,5 +29,23 @@ export class ConsclienteComponent implements OnInit {
       cnpj: [null],
     });
   }
+
+  consulta() {
+    this.clienteService.listar('c').subscribe(
+      resposta => {
+        this.instituicao = resposta as any;
+      }
+    );
+  }
+
+  pesquisar() {
+    const nome = this.formulario.get('nome').value;
+    const email = this.formulario.get('email').value;
+    this.clienteService.pesquisar(nome, email).subscribe(
+     resposta => {
+       this.instituicao = resposta as any;
+     }
+   );
+ }
 
 }

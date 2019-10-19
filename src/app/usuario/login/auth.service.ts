@@ -37,8 +37,8 @@ export class AuthService {
     this.usuairoAutenticado;
     }*/
 
-    fazerLogin(user: string, password: string) {
-      this.usuarioService.logar(user, password).subscribe(
+    fazerLogin(usuario: Usuario) {
+      this.usuarioService.logar(usuario.user, usuario.password).subscribe(
         resposta => {
           this.usuario = resposta as Usuario;
           if ( this.usuario != null ) {

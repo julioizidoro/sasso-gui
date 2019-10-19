@@ -14,7 +14,12 @@ export class LoginComponent implements OnInit {
   formulario: FormGroup;
   uusario: Usuario;
 
-
+  idusuario: number;
+  nome: string;
+  fonecelular: string;
+  user: string;
+  password: string;
+  email: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,13 +29,18 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
+      idusuario: [null],
+      nome: [null],
+      fonecelular: [null],
       user: [null],
       password: [null],
+      email: [null]
     });
 
   }
 
   logar() {
-    this.authService.fazerLogin(this.formulario.get('user').value, this.formulario.get('password').value);
+    this.uusario = this.formulario.value;
+    this.authService.fazerLogin(this.uusario);
   }
 }

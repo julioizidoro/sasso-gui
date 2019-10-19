@@ -1,6 +1,10 @@
+import { ClienteService } from './../cliente.service';
+import { CepService } from './../../shared/components/cepservice.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Cep } from 'src/app/shared/model/cep';
+import { Instituicao } from '../model/instituicao';
 
 @Component({
   selector: 'app-cadcliente',
@@ -9,11 +13,13 @@ import { Router } from '@angular/router';
 })
 export class CadclienteComponent implements OnInit {
 
+  instituicao: Instituicao;
    formulario: FormGroup;
    pessoaJuridica = false;
-   pessoaFisica = false;
+   pessoaFisica = true;
    isFirstOpen = true;
    oneAtATime: true;
+   cep: Cep;
    public maskCPF = [/[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/];
   // tslint:disable-next-line:max-line-length
   public maskCNPJ = [/[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/];
@@ -26,54 +32,46 @@ export class CadclienteComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private cepService: CepService,
+    private clienteService: ClienteService,
   ) { }
 
   ngOnInit() {
-    
+    this.instituicao = new Instituicao();
     this.formulario = this.formBuilder.group({
 
       idinstituicao: [null],
       nome: [null],
-      cpfcnpj: [null],
-      email: [null],
-      fonecelular: [null],
-      fonefixo: [null],
-      datacadastro: [null],
-      tipo: [null],
       tipojuridico: [null],
-      segundo: [false],
-      clientesocio: this.formBuilder.group({
-        idclientesocio: [null],
-        csnome: [null],
-        cscpf: [null],
-        csfonecelular: [null],
-        csemail: [null]
+      situacao: [null],
+      cpfcnpj: [null],
+      possuiie: [null],
+      ie: [null],
+      im: [null],
+      optantesimples: [null],
+      email: [null],
+      fonefixo: [null],
+      fonecelular: [null],
+      datanascimento: [null],
+      observacao: [null],
+      tipo: [null],
+      instituicaocontato: this.formBuilder.group({
+        idinstituicaocontato: [null],
+        nome: [null],
+        email: [null],
+        fone: [null],
+        cargo: [null],
       }),
-      clienteendereco: this.formBuilder.group({
-        idclienteenderecoresidencial: [null],
-        cercep: [null],
-        cerendereco: [null],
-        cernumero: [null],
-        cerbairro: [null],
-        cercomplemento: [null],
-        cercidade: [null],
-        cerestado: [null],
-        cerfoneresidencial: [null]
+      instituicaoendereco: this.formBuilder.group({
+        idinstituicaoendereco: [null],
+        logradouro: [null],
+        numero: [null],
+        complemento: [null],
+        bairro: [null],
+        cidade: [null],
+        estado: [null],
+        cep: [null],
       }),
-      clientecomplemento: this.formBuilder.group({
-        idclienteclientecomplemento: [null],
-        nacionalidade: [null],
-        naturalidade: [null],
-        nomepai: [null],
-        nomemae: [null],
-        profissao: [null],
-        estadocivil: [null],
-        numerorg: [null],
-        dataemissao: [null],
-        emissor: [null],
-        sexo: [null]
-      }),
-     
     });
   }
 
@@ -87,12 +85,39 @@ export class CadclienteComponent implements OnInit {
     }
   }
 
-  salvar(){
-
+  salvar() {
+    this.formulario.patchValue( {
+      datacadastro: new Date(),
+      tipo: 'c'
+      });
+    this.instituicao = this.formulario.value;
+    this.clienteService.salvar( this.instituicao).subscribe(
+      resposta => {
+        this.instituicao = resposta as any;
+        this.router.navigate(['/consCliente']);
+      }
+    );
   }
 
-  cancelar(){
+  cancelar() {
     this.router.navigate([ '/conscliente']);
   }
 
+  consultarCEP() {
+    let cepInformado;
+    cepInformado = this.formulario.get('instituicaoendereco.cep').value;
+    cepInformado = cepInformado.replace(/\D/g, '');
+    this.cepService.consultar(cepInformado).subscribe(
+      resposta => {
+        this.cep = resposta;
+        this.formulario.patchValue({
+            instituicaoendereco: {
+                logradouro: this.cep.logradouro,
+                bairro: this.cep.bairro,
+                cidade: this.cep.localidade,
+                estado: this.cep.uf
+            }
+        });
+      });
+  }
 }
