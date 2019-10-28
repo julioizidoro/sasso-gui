@@ -17,6 +17,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 // main layout
 import { NavigationModule } from './main-layout/navigation/navigation.module';
+import { ProdutoModule } from './produto/produto.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { NavigationModule } from './main-layout/navigation/navigation.module';
     ErrorModule,
     FormsModule,
     ClienteModule,
+    ProdutoModule,
     ReactiveFormsModule,
     UsuarioModule,
   ],

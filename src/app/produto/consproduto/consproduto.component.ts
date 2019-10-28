@@ -61,7 +61,9 @@ pesquisar() {
           resposta => {
             this.produtos = resposta as any;
           }
-       );  
+       );
+      }  
+    }
   }
 }
 }
