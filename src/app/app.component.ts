@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AuthService } from './usuario/login/auth.service';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -13,7 +12,6 @@ import { AuthService } from './usuario/login/auth.service';
 
 export class AppComponent implements OnInit {
   values: string[] = ['Tag 1', 'Tag 2', 'Tag 4'];
-  logado = false;
 
   specialPage: boolean;
 
@@ -27,6 +25,7 @@ export class AppComponent implements OnInit {
   ];
 
   private currentUrl = '';
+  logado = true;
 
   constructor(
     private router: Router,
@@ -34,7 +33,7 @@ export class AppComponent implements OnInit {
     private authService: AuthService,
   ) {
 
-    this.router.events.subscribe((route: any) => {
+    this.router.events.subscribe((route:any) => {
       this.currentUrl = route.url;
 
       this.specialPage = this.specialPages.indexOf(this.currentUrl) !== -1;

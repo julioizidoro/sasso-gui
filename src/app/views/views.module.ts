@@ -11,10 +11,12 @@ import { SharedModule } from '../shared/shared.module';
 
 import { TableComponent } from './tables/table.component';
 import { ModalsComponent } from './modals/modals.component';
-import { StatsCardComponent } from './dashboards/common/stats-card/stats-card.component';
-import { StatsCard2Component } from './dashboards/common/stats-card2/stats-card2.component';
+import { CardDashboardComponent } from './dashboards/common/card-dashboard/card-dashboard.component';
 import { DashboardComponent } from './dashboards/dashboard/dashboard.component';
 import {LoginComponent} from './login/login.component';
+import {LinhaTempoComponent} from './dashboards/linha-tempo/linha-tempo.component';
+import {GraficoVendasComponent} from './dashboards/grafico-vendas/grafico-vendas.component';
+import {ChartModule} from 'primeng/chart';
 
 
 @NgModule({
@@ -22,10 +24,11 @@ import {LoginComponent} from './login/login.component';
     CommonModule,
     RouterModule,
     FormsModule,
-    BrowserModule,
     ReactiveFormsModule,
+    BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
+    ChartModule,
     AgmCoreModule.forRoot({
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en#key
       apiKey: ''
@@ -35,16 +38,16 @@ import {LoginComponent} from './login/login.component';
   declarations: [
     TableComponent,
     ModalsComponent,
-    StatsCardComponent,
-    StatsCard2Component,
+    CardDashboardComponent,
+    LinhaTempoComponent,
+    GraficoVendasComponent,
     DashboardComponent,
     LoginComponent,
   ],
   exports: [
     TableComponent,
     ModalsComponent,
-    StatsCardComponent,
-    StatsCard2Component,
+    CardDashboardComponent,
     DashboardComponent,
     LoginComponent,
   ],

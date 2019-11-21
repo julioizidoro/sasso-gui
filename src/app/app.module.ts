@@ -1,6 +1,3 @@
-import { UsuarioModule } from './usuario/usuario.module';
-import { UsuarioService } from './usuario/usuario.service';
-import { ClienteModule } from './cliente/cliente.module';
 import { AgmCoreModule } from '@agm/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,18 +10,18 @@ import { AppRoutes } from './app.routes.service';
 import { ViewsModule } from './views/views.module';
 import { SharedModule } from './shared/shared.module';
 import { ErrorModule } from './views/errors/error.module';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 // main layout
 import { NavigationModule } from './main-layout/navigation/navigation.module';
+import { ClienteModule } from './cliente/cliente.module';
 import { ProdutoModule } from './produto/produto.module';
+import { UsuarioModule } from './usuario/usuario.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
-    MDBBootstrapModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: ''
     }),
@@ -38,9 +35,9 @@ import { ProdutoModule } from './produto/produto.module';
     ViewsModule,
     ErrorModule,
     FormsModule,
+    ReactiveFormsModule,
     ClienteModule,
     ProdutoModule,
-    ReactiveFormsModule,
     UsuarioModule,
   ],
   providers: [],

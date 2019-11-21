@@ -1,7 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { AuthService } from 'src/app/usuario/login/auth.service';
-import { Usuario } from 'src/app/usuario/model/usuario';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,27 +10,16 @@ export class NavigationComponent implements OnInit {
   @ViewChild('sidenav', {static: true}) sidenav: ElementRef;
 
   clicked: boolean;
-  usuario: Usuario;
 
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-  )
-   {
+  constructor() {
     this.clicked = this.clicked === undefined ? false : true;
   }
 
   ngOnInit() {
-    this.usuario = this.authService.usuario;
   }
 
   setClicked(val: boolean): void {
     this.clicked = val;
-  }
-
-  logof() {
-    this.authService.mostrarMenuEmitter.unsubscribe();
-    this.router.navigate(['/login']);
   }
 
 }
