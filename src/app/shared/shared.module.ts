@@ -1,4 +1,4 @@
-import { CepService } from './components/cepservice.service';
+import { ConsultacepService } from './cep/consultacep.service';
 import { ModalComponent } from './components/modal/modal.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NgModule, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -7,7 +7,6 @@ import { CascadingPanelComponent } from './components/cascading-panel/cascading-
 import { CascadingCardComponent } from './components/cascading-card/cascading-card.component';
 import { OverlayCardComponent } from './components/overlay-card/overlay-card.component';
 import { PanelComponent } from './components/panel/panel.component';
-
 
 @NgModule({
   imports: [
@@ -30,7 +29,7 @@ import { PanelComponent } from './components/panel/panel.component';
     ModalComponent,
   ],
   providers: [
-    CepService
+    ConsultacepService,
   ],
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
 })

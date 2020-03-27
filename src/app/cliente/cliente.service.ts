@@ -9,9 +9,28 @@ import { Instituicao } from './model/instituicao';
 })
 export class ClienteService {
 
+  private instituicao: Instituicao;
+  private rota: string;
+
   constructor(
     private httpCliente: HttpClient
   ) { }
+
+  getInstituicao(): Instituicao {
+    return this.instituicao;
+  }
+
+  setInstituicao(instituicao: Instituicao) {
+    this.instituicao = instituicao;
+  }
+
+  getRota() {
+    return this.rota;
+  }
+
+  setRota(rota: string) {
+    this.rota = rota;
+  }
 
   salvar(instituicao: Instituicao): Observable<any> {
     return this.httpCliente.post<any>(env.baseApiUrl + 'instituicao/salvar', instituicao);

@@ -10,10 +10,9 @@ import { CalendarModule,  } from 'angular-calendar';
 import { SharedModule } from '../shared/shared.module';
 
 import { TableComponent } from './tables/table.component';
-import { ModalsComponent } from './modals/modals.component';
 import { CardDashboardComponent } from './dashboards/common/card-dashboard/card-dashboard.component';
 import { DashboardComponent } from './dashboards/dashboard/dashboard.component';
-import {LoginComponent} from './login/login.component';
+import {LoginComponent} from '../usuario/login/login.component';
 import {LinhaTempoComponent} from './dashboards/linha-tempo/linha-tempo.component';
 import {GraficoVendasComponent} from './dashboards/grafico-vendas/grafico-vendas.component';
 import {ChartModule} from 'primeng/chart';
@@ -24,9 +23,9 @@ import {ChartModule} from 'primeng/chart';
     CommonModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     SharedModule,
     ChartModule,
     AgmCoreModule.forRoot({
@@ -37,19 +36,15 @@ import {ChartModule} from 'primeng/chart';
   ],
   declarations: [
     TableComponent,
-    ModalsComponent,
     CardDashboardComponent,
     LinhaTempoComponent,
     GraficoVendasComponent,
     DashboardComponent,
-    LoginComponent,
   ],
   exports: [
     TableComponent,
-    ModalsComponent,
     CardDashboardComponent,
     DashboardComponent,
-    LoginComponent,
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

@@ -1,3 +1,5 @@
+import { Estoque } from 'src/app/estoque/model/estoque';
+
 export class Produto {
 
     idproduto: number;

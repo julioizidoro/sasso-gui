@@ -22,9 +22,17 @@ export class AuthService {
     private usuarioService: UsuarioService,
   ) { }
 
+  getUsuario() {
+    return this.usuario;
+  }
+
+  setUsuario(usuario: Usuario) {
+    this.usuario = usuario;
+  }
+
  /* fazerLogin(usuario: Usuario) {
     console.log();
-    if (usuario.user === 'sasso' &&  usuario.password  === '123456' ) {
+    if (usuario.login === 'sasso' &&  usuario.senha  === '123456' ) {
         this.usuairoAutenticado = true;
         usuario.nome = 'Sasso Tabacco';
         this.usuario = usuario;
@@ -34,11 +42,10 @@ export class AuthService {
         this.usuairoAutenticado = false;
         this.mostrarMenuEmitter.emit(false);
       }
-    this.usuairoAutenticado;
     }*/
 
     fazerLogin(usuario: Usuario) {
-      this.usuarioService.logar(usuario.user, usuario.password).subscribe(
+      this.usuarioService.logar(usuario.login, usuario.senha).subscribe(
         resposta => {
           this.usuario = resposta as Usuario;
           if ( this.usuario != null ) {
@@ -53,5 +60,11 @@ export class AuthService {
           console.log(err.error.erros.join(' '));
         }
       );
+    }
+
+    fazerLogof() {
+      this.usuario = null;
+      this.usuairoAutenticado = false;
+      this.mostrarMenuEmitter.emit(false);
     }
 }

@@ -28,9 +28,10 @@ export class ConsclienteComponent implements OnInit {
       email: [null],
       cnpj: [null],
     });
+    this.consultar();
   }
 
-  consulta() {
+  consultar() {
     this.clienteService.listar('c').subscribe(
       resposta => {
         this.instituicao = resposta as any;
@@ -47,5 +48,25 @@ export class ConsclienteComponent implements OnInit {
      }
    );
  }
+
+
+ editar(instituicao: Instituicao) {
+    if (this.clienteService.getRota() === 'cadclinete') {
+      this.clienteService.setInstituicao(null);
+      this.router.navigate(['/cadcliente']);
+    } else if (this.clienteService.getRota() === 'contasreceber') {
+      this.clienteService.setInstituicao(instituicao);
+      this.router.navigate(['/cadreceber']);  
+    } else if (this.clienteService.getRota() === 'contaspgar') {
+      this.clienteService.setInstituicao(instituicao);
+      this.router.navigate(['/cadpagar']);
+    }
+ }
+
+ selecionarCliente(i: Instituicao) {
+
+ }
+
+
 
 }
